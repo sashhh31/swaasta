@@ -37,7 +37,6 @@ export default function RootLayout({ children, params }: DashboardLayoutProps) {
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
         <div className="flex min-h-screen flex-col">
-        <RoleHeader role={role} userName={userData.name} userAvatar={userData.avatar} />
         <div className="flex flex-1">
           <main className="flex-1 p-6 md:p-8">{children}</main>
         </div>

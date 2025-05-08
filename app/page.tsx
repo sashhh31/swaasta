@@ -1,9 +1,10 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Search, ChevronRight, Star } from 'lucide-react'
+import { Search, ChevronRight, Star, Heart } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { Badge } from "@/components/ui/badge"
 
 export default function Home() {
   return (
@@ -58,14 +59,14 @@ export default function Home() {
             </div>
             <div className="hidden sm:flex items-center gap-2">
               <Link href="/auth/login">
-              <Button variant="outline" className="border-teal-800 text-teal-800 hover:bg-teal-50">
-                Log in
-              </Button>
+                <Button variant="outline" className="border-teal-800 text-teal-800 hover:bg-teal-50">
+                  Log in
+                </Button>
               </Link>
               <Link href="/auth/register">
-              <Button className="bg-teal-800 text-white hover:bg-teal-700">
-                Register
-              </Button>
+                <Button className="bg-teal-800 text-white hover:bg-teal-700">
+                  Register
+                </Button>
               </Link>
             </div>
           </div>
@@ -73,103 +74,151 @@ export default function Home() {
       </header>
 
       <main>
-        {/* Hero Section */}
-        <section className="relative">
-          <div className="container px-4 py-8">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="space-y-6">
-                <h1 className="text-4xl md:text-5xl font-bold text-teal-900 leading-tight">
-                  CONNECT DIRECTLY<br />WITH YOUR DOCTOR
-                </h1>
-                <p className="text-xl text-teal-800 tracking-widest">
-                  CONCIERGE MEDICINE
-                </p>
-                <p className="text-gray-600 max-w-md">
-                  Experience healthcare like never before. Book appointments, order medicines, 
-                  schedule lab tests, and more - all in one place.
-                </p>
-                <Button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-6 text-lg rounded-md">
-                  MAKE AN APPOINTMENT TODAY!
-                </Button>
-              </div>
-              <div className="relative h-[400px] rounded-lg overflow-hidden">
-                <Image 
-                  src="/placeholder.svg?height=800&width=600" 
-                  alt="Doctor with digital health interface"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-transparent mix-blend-overlay"></div>
-              </div>
-            </div>
-          </div>
-          
-          {/* DNA Background Element */}
-          <div className="absolute left-0 top-0 w-full h-full -z-10 opacity-10">
-            <div className="absolute left-10 top-1/4 w-64 h-64 rounded-full border-4 border-teal-200 animate-pulse"></div>
-            <div className="absolute right-10 bottom-1/4 w-48 h-48 rounded-full border-4 border-teal-300 animate-pulse delay-700"></div>
-          </div>
-        </section>
+        {/* Hero Section - With image as main background */}
+        <section className="relative bg-[url('/medicine.png')] bg-cover bg-center min-h-screen flex items-center text-white">
+  {/* Overlay */}
+  <div className="absolute inset-0  z-0" />
 
-        {/* Services Overview */}
-        <section className="py-12 bg-gradient-to-b from-white to-teal-50">
+  {/* Main Content */}
+  <div className="relative z-10 w-full">
+    <div className="container px-4 py-20">
+      <div className="grid md:grid-cols-2 gap-12 items-center">
+        
+        {/* Left Text */}
+        <div className="space-y-6">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg">
+            HEALTHCARE. REAL RESULTS
+          </h1>
+          <p className="text-gray-200 text-lg leading-relaxed">
+            Take the step towards a healthier, more vibrant life – shop now and fuel your body with the best!
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Button className="bg-teal-700 hover:bg-teal-600 text-white px-6 py-3 rounded-full shadow-lg transition-all duration-300 flex items-center">
+              Shop now
+              <ChevronRight className="h-4 w-4 ml-2" />
+            </Button>
+            <Button variant="link" className="text-teal-300 hover:text-teal-100 transition-colors duration-300">
+              Learn more
+            </Button>
+          </div>
+        </div>
+
+        {/* Right Product Image */}
+        <div className="relative flex justify-center">
+          <div className="relative h-[400px] w-full max-w-md">
+            <Image
+              src="/image.png"
+              alt="Vitamin D3+K2 supplement bottle"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+
+          {/* Floating Badges */}
+          <div className="absolute top-1/4 right-0">
+            <Badge className="bg-white text-gray-800 shadow-md rounded-full px-3 py-1 hover:bg-gray-100 transition-all">
+              Allergen-Free
+            </Badge>
+          </div>
+          <div className="absolute bottom-1/4 left-0">
+            <Badge className="bg-white text-gray-800 shadow-md rounded-full px-3 py-1 hover:bg-gray-100 transition-all">
+              Premium Ingredients
+            </Badge>
+          </div>
+          <div className="absolute bottom-1/3 right-0">
+            <Badge className="bg-white text-gray-800 shadow-md rounded-full px-3 py-1 hover:bg-gray-100 transition-all">
+              Non-GMO
+            </Badge>
+          </div>
+        </div>
+      </div>
+
+      {/* Background Text */}
+      <div className="absolute right-0 top-0 text-white opacity-5 text-9xl font-black pointer-events-none select-none">
+        HEALTH
+      </div>
+
+      {/* Decorative Circle */}
+      <div className="absolute right-10 bottom-1/4 w-48 h-48 rounded-full border-4 border-pink-300 animate-pulse opacity-30 z-0"></div>
+    </div>
+  </div>
+</section>
+
+        {/* Products Section */}
+        {/* <section className="py-12 bg-gray-50">
           <div className="container px-4">
-            <div className="grid md:grid-cols-4 gap-6">
-              <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-                <div className="h-12 w-12 bg-teal-100 rounded-full flex items-center justify-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-teal-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-teal-900 mb-2">Find Doctors</h3>
-                <p className="text-gray-600 mb-4">Connect with top specialists in your area for consultations and treatments.</p>
-                <Button variant="link" className="text-teal-700 p-0 flex items-center">
-                  Learn More <ChevronRight className="h-4 w-4 ml-1" />
-                </Button>
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center">
+                <div className="w-1 h-8 bg-yellow-500 mr-3"></div>
+                <h2 className="text-2xl font-bold text-teal-800">New Arrivals</h2>
               </div>
-              
-              <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-                <div className="h-12 w-12 bg-teal-100 rounded-full flex items-center justify-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-teal-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>
+              <Link href="/products" className="text-teal-700 flex items-center">
+                View all products <ChevronRight className="h-4 w-4 ml-1" />
+              </Link>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  name: "Omega-3 Fish oil",
+                  subtitle: "Original Formula",
+                  price: "$22.00",
+                  image: "/placeholder.svg?height=300&width=200&text=Omega-3"
+                },
+                {
+                  name: "Vitamin D3+K2",
+                  subtitle: "With Coconut MCT Oil",
+                  price: "$45.99",
+                  image: "/placeholder.svg?height=300&width=200&text=Vitamin+D3"
+                },
+                {
+                  name: "Marine Collagen Peptides",
+                  subtitle: "30 Servings",
+                  price: "$32.99",
+                  image: "/placeholder.svg?height=300&width=200&text=Collagen"
+                },
+                {
+                  name: "A set of Dietary supplements",
+                  subtitle: "60-Day Collagen Regimen",
+                  price: "$39.00",
+                  image: "/placeholder.svg?height=300&width=200&text=Supplements"
+                }
+              ].map((product, index) => (
+                <div key={index} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow group">
+                  <div className="relative">
+                    <div className="aspect-square relative overflow-hidden bg-white">
+                      <Image
+                        src={product.image || "/placeholder.svg"}
+                        alt={product.name}
+                        fill
+                        className="object-contain p-4"
+                      />
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="absolute top-2 right-2 text-gray-400 hover:text-teal-600"
+                    >
+                      <Heart className="h-4 w-4" />
+                      <span className="sr-only">Add to wishlist</span>
+                    </Button>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-medium text-gray-800">{product.name}</h3>
+                    <p className="text-sm text-gray-500 mb-2">{product.subtitle}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="font-bold text-gray-800">{product.price}</span>
+                      <Button size="sm" className="bg-teal-800 hover:bg-teal-700 text-white rounded-full">
+                        Add to cart
+                      </Button>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-teal-900 mb-2">Pharmacy</h3>
-                <p className="text-gray-600 mb-4">Order medicines online and get them delivered to your doorstep.</p>
-                <Button variant="link" className="text-teal-700 p-0 flex items-center">
-                  Learn More <ChevronRight className="h-4 w-4 ml-1" />
-                </Button>
-              </div>
-              
-              <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-                <div className="h-12 w-12 bg-teal-100 rounded-full flex items-center justify-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-teal-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-teal-900 mb-2">Laboratory</h3>
-                <p className="text-gray-600 mb-4">Book diagnostic tests and get your reports online.</p>
-                <Button variant="link" className="text-teal-700 p-0 flex items-center">
-                  Learn More <ChevronRight className="h-4 w-4 ml-1" />
-                </Button>
-              </div>
-              
-              <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-                <div className="h-12 w-12 bg-teal-100 rounded-full flex items-center justify-center mb-4">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-teal-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-teal-900 mb-2">Hospitals</h3>
-                <p className="text-gray-600 mb-4">Find the best hospitals and healthcare facilities near you.</p>
-                <Button variant="link" className="text-teal-700 p-0 flex items-center">
-                  Learn More <ChevronRight className="h-4 w-4 ml-1" />
-                </Button>
-              </div>
+              ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Doctors Section */}
         <section id="doctors" className="py-12">
@@ -179,29 +228,54 @@ export default function Home() {
                 <div className="w-1 h-8 bg-yellow-500 mr-3"></div>
                 <h2 className="text-2xl font-bold text-teal-800">Doctors</h2>
               </div>
-              <Link href="/find-services" className="text-teal-700 flex items-center">
+              <Link href="/doctors" className="text-teal-700 flex items-center">
                 View All <ChevronRight className="h-4 w-4 ml-1" />
               </Link>
             </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[1, 2, 3, 4].map((item) => (
-                <div key={item} className="border rounded-lg overflow-hidden bg-white hover:shadow-md transition-shadow">
+              {[
+                {
+                  name: "Dr. Avinash",
+                  specialty: "Doctor of Medicine",
+                  location: "Vasnt Kunj, Del",
+                  image: "/placeholder.svg?height=200&width=200&text=Doctor"
+                },
+                {
+                  name: "Dr. Maria Andaloro",
+                  specialty: "Dental Medicine",
+                  location: "Vasnt Kunj, Del",
+                  image: "/placeholder.svg?height=200&width=200&text=Doctor"
+                },
+                {
+                  name: "Dr. Michael Brian",
+                  specialty: "Family Physician",
+                  location: "Vasnt Kunj, Del",
+                  image: "/placeholder.svg?height=200&width=200&text=Doctor"
+                },
+                {
+                  name: "Dr. Michael Brian",
+                  specialty: "Family Physician",
+                  location: "Vasnt Kunj, Del",
+                  image: "/placeholder.svg?height=200&width=200&text=Doctor"
+                }
+              ].map((doctor, index) => (
+                <div key={index} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                   <div className="p-6 flex flex-col items-center">
                     <div className="relative w-32 h-32 mb-4">
-                      <div className="w-full h-full rounded-full overflow-hidden bg-yellow-300">
+                      <div className="w-full h-full rounded-full overflow-hidden bg-gray-100">
                         <Image 
-                          src="/placeholder.svg?height=200&width=200" 
-                          alt="Doctor profile"
+                          src={doctor.image || "/placeholder.svg"}
+                          alt={doctor.name}
                           width={128}
                           height={128}
                           className="object-cover"
                         />
                       </div>
                     </div>
-                    <h3 className="text-lg font-semibold text-teal-900">Dr. {item === 1 ? "Avinash" : item === 2 ? "Maria Andaloro" : "Michael Brian"}</h3>
-                    <p className="text-gray-600 mb-1">{item === 1 ? "Doctor of Medicine" : item === 2 ? "Dental Medicine" : "Family Physician"}</p>
-                    <p className="text-gray-500 text-sm mb-3">Vasnt Kunj, Del</p>
+                    <h3 className="text-lg font-semibold text-teal-900">{doctor.name}</h3>
+                    <p className="text-gray-600 mb-1">{doctor.specialty}</p>
+                    <p className="text-gray-500 text-sm mb-3">{doctor.location}</p>
                     <div className="flex items-center mb-4">
                       {[1, 2, 3, 4, 5].map((star) => (
                         <Star key={star} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
@@ -230,34 +304,61 @@ export default function Home() {
                 <div className="w-1 h-8 bg-yellow-500 mr-3"></div>
                 <h2 className="text-2xl font-bold text-teal-800">Laboratory</h2>
               </div>
-              <Link href="/find-services" className="text-teal-700 flex items-center">
+              <Link href="/laboratory" className="text-teal-700 flex items-center">
                 View All <ChevronRight className="h-4 w-4 ml-1" />
               </Link>
             </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[1, 2, 3, 4].map((item) => (
-                <div key={item} className="border rounded-lg overflow-hidden bg-white hover:shadow-md transition-shadow">
+              {[
+                {
+                  name: "City Lab Center",
+                  address: "Mig-302, Lane 8, Satya sai",
+                  image: "/placeholder.svg?height=200&width=200&text=Lab"
+                },
+                {
+                  name: "Precise Diagnostics",
+                  address: "43, Ritvik Nilaya, 2nd main",
+                  image: "/placeholder.svg?height=200&width=200&text=Lab"
+                },
+                {
+                  name: "Metro Labs",
+                  address: "Mig-302, Lane 8, Satya sai",
+                  image: "/placeholder.svg?height=200&width=200&text=Lab"
+                },
+                {
+                  name: "HealthPoint Diagnostics",
+                  address: "Plot no-3637, Indian idol",
+                  image: "/placeholder.svg?height=200&width=200&text=Lab"
+                }
+              ].map((lab, index) => (
+                <div key={index} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                   <div className="p-6 flex flex-col items-center">
                     <div className="relative w-32 h-32 mb-4">
-                      <div className="w-full h-full rounded-full overflow-hidden bg-yellow-300">
+                      <div className="w-full h-full rounded-full overflow-hidden bg-gray-100">
                         <Image 
-                          src="/placeholder.svg?height=200&width=200" 
-                          alt="Laboratory profile"
+                          src={lab.image || "/placeholder.svg"}
+                          alt="Laboratory"
                           width={128}
                           height={128}
                           className="object-cover"
                         />
                       </div>
                     </div>
-                    <p className="text-gray-600 mb-3 text-center">
-                      {item === 1 || item === 3 ? "Mig-302, Lane 8, Satya sai" : 
-                       item === 2 ? "43, Ritvik Nilaya, 2nd main" : "Plot no-3637, Indian idol"}
-                    </p>
+                    <h3 className="text-lg font-semibold text-teal-900">{lab.name}</h3>
+                    <p className="text-gray-600 mb-3 text-center">{lab.address}</p>
                     <div className="flex items-center mb-4">
                       {[1, 2, 3, 4, 5].map((star) => (
                         <Star key={star} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
                       ))}
+                    </div>
+                    <div className="grid grid-cols-1 gap-2 w-full">
+                      <Button className="bg-teal-800 hover:bg-teal-700 text-white w-full">
+                        Book Test
+                      </Button>
+                      <Button variant="outline" className="border-yellow-500 text-yellow-600 hover:bg-yellow-50 w-full">
+                        View Details
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -274,19 +375,40 @@ export default function Home() {
                 <div className="w-1 h-8 bg-yellow-500 mr-3"></div>
                 <h2 className="text-2xl font-bold text-teal-800">Pharmacy</h2>
               </div>
-              <Link href="#" className="text-teal-700 flex items-center">
+              <Link href="/find-services" className="text-teal-700 flex items-center">
                 View All <ChevronRight className="h-4 w-4 ml-1" />
               </Link>
             </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[1, 2, 3, 4].map((item) => (
-                <div key={item} className="border rounded-lg overflow-hidden bg-white hover:shadow-md transition-shadow">
+              {[
+                {
+                  name: "MedPlus Pharmacy",
+                  address: "Rajouri Garden, Del",
+                  image: "/placeholder.svg?height=200&width=200&text=Pharmacy"
+                },
+                {
+                  name: "HealthMart",
+                  address: "Connaught Place, Del",
+                  image: "/placeholder.svg?height=200&width=200&text=Pharmacy"
+                },
+                {
+                  name: "Wellness Drugs",
+                  address: "Mayur Vihar, Del",
+                  image: "/placeholder.svg?height=200&width=200&text=Pharmacy"
+                },
+                {
+                  name: "Care Pharmaceuticals",
+                  address: "Karol Bagh, Del",
+                  image: "/placeholder.svg?height=200&width=200&text=Pharmacy"
+                }
+              ].map((pharmacy, index) => (
+                <div key={index} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                   <div className="p-6 flex flex-col items-center">
                     <div className="relative w-32 h-32 mb-4">
-                      <div className="w-full h-full rounded-full overflow-hidden bg-yellow-300">
+                      <div className="w-full h-full rounded-full overflow-hidden bg-yellow-50">
                         <Image 
-                          src="/placeholder.svg?height=200&width=200" 
+                          src={pharmacy.image} 
                           alt="Pharmacy profile"
                           width={128}
                           height={128}
@@ -294,56 +416,19 @@ export default function Home() {
                         />
                       </div>
                     </div>
+                    <h3 className="text-lg font-semibold text-teal-900">{pharmacy.name}</h3>
+                    <p className="text-gray-500 text-sm mb-3">{pharmacy.address}</p>
                     <div className="flex items-center mb-4">
                       {[1, 2, 3, 4, 5].map((star) => (
                         <Star key={star} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
                       ))}
                     </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Featured Products */}
-        <section className="py-12 bg-gradient-to-b from-white to-teal-50">
-          <div className="container px-4">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold text-teal-900 mb-4">Featured Health Products</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                Discover our curated selection of premium health and wellness products to support your journey to better health.
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[1, 2, 3, 4].map((item) => (
-                <div key={item} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-                  <div className="h-48 relative">
-                    <Image 
-                      src={`/placeholder.svg?height=300&width=400&text=Product+${item}`}
-                      alt={`Health product ${item}`}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-semibold text-teal-900 mb-1">
-                      {item === 1 ? "Organic Multivitamin" : 
-                       item === 2 ? "Herbal Immunity Booster" : 
-                       item === 3 ? "Natural Skin Care Set" : 
-                       "Ayurvedic Wellness Pack"}
-                    </h3>
-                    <div className="flex items-center mb-2">
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <Star key={star} className={`h-4 w-4 ${star <= 4 ? "fill-yellow-400 text-yellow-400" : "fill-gray-200 text-gray-200"}`} />
-                      ))}
-                      <span className="text-sm text-gray-500 ml-1">(42)</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <p className="font-bold text-teal-800">₹{item * 299}</p>
-                      <Button size="sm" className="bg-teal-700 hover:bg-teal-600 text-white">
-                        Add to Cart
+                    <div className="grid grid-cols-1 gap-2 w-full">
+                      <Button className="bg-teal-800 hover:bg-teal-700 text-white w-full">
+                        Order Medicines
+                      </Button>
+                      <Button variant="outline" className="border-yellow-500 text-yellow-600 hover:bg-yellow-50 w-full">
+                        View Details
                       </Button>
                     </div>
                   </div>
@@ -353,40 +438,74 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Testimonials */}
-        <section className="py-16 bg-teal-50">
+        {/* Hospital Section */}
+        <section id="hospital" className="py-12 bg-gray-50">
           <div className="container px-4">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold text-teal-900 mb-4">What Our Customers Say</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                Hear from our satisfied customers about their experience with SWAASTA's healthcare services.
-              </p>
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center">
+                <div className="w-1 h-8 bg-yellow-500 mr-3"></div>
+                <h2 className="text-2xl font-bold text-teal-800">Hospitals</h2>
+              </div>
+              <Link href="/hospitals" className="text-teal-700 flex items-center">
+                View All <ChevronRight className="h-4 w-4 ml-1" />
+              </Link>
             </div>
             
-            <div className="grid md:grid-cols-3 gap-8">
-              {[1, 2, 3].map((item) => (
-                <div key={item} className="bg-white p-6 rounded-xl shadow-md">
-                  <div className="flex items-center mb-4">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star key={star} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                  <p className="text-gray-600 mb-6">
-                    {item === 1 ? 
-                      "SWAASTA has completely transformed how I manage my healthcare. The convenience of booking appointments and getting medicines delivered is incredible." : 
-                     item === 2 ? 
-                      "The doctors on SWAASTA are highly professional and caring. I've been getting my regular check-ups through the platform and couldn't be happier." : 
-                      "The lab test booking and home collection service saved me so much time. The reports were delivered promptly and the entire experience was seamless."}
-                  </p>
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 rounded-full bg-teal-100 mr-4"></div>
-                    <div>
-                      <h4 className="font-semibold text-teal-900">
-                        {item === 1 ? "Priya Sharma" : item === 2 ? "Rahul Mehta" : "Ananya Patel"}
-                      </h4>
-                      <p className="text-sm text-gray-500">
-                        {item === 1 ? "Delhi" : item === 2 ? "Mumbai" : "Bangalore"}
-                      </p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  name: "City Hospital",
+                  specialty: "Multi-Specialty Hospital",
+                  location: "Vasnt Kunj, Del",
+                  image: "/placeholder.svg?height=200&width=200&text=Hospital"
+                },
+                {
+                  name: "Metro Medical Center",
+                  specialty: "Cardiology Center",
+                  location: "Vasnt Kunj, Del",
+                  image: "/placeholder.svg?height=200&width=200&text=Hospital"
+                },
+                {
+                  name: "Care Hospital",
+                  specialty: "Pediatric Specialty",
+                  location: "Vasnt Kunj, Del",
+                  image: "/placeholder.svg?height=200&width=200&text=Hospital"
+                },
+                {
+                  name: "Health & Wellness Center",
+                  specialty: "General Medicine",
+                  location: "Vasnt Kunj, Del",
+                  image: "/placeholder.svg?height=200&width=200&text=Hospital"
+                }
+              ].map((hospital, index) => (
+                <div key={index} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                  <div className="p-6 flex flex-col items-center">
+                    <div className="relative w-32 h-32 mb-4">
+                      <div className="w-full h-full rounded-full overflow-hidden bg-teal-50">
+                        <Image 
+                          src={hospital.image}
+                          alt="Hospital profile"
+                          width={128}
+                          height={128}
+                          className="object-cover"
+                        />
+                      </div>
+                    </div>
+                    <h3 className="text-lg font-semibold text-teal-900">{hospital.name}</h3>
+                    <p className="text-gray-600 mb-1">{hospital.specialty}</p>
+                    <p className="text-gray-500 text-sm mb-3">{hospital.location}</p>
+                    <div className="flex items-center mb-4">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star key={star} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                    <div className="grid grid-cols-1 gap-2 w-full">
+                      <Button className="bg-teal-800 hover:bg-teal-700 text-white w-full">
+                        Book Appointment
+                      </Button>
+                      <Button variant="outline" className="border-yellow-500 text-yellow-600 hover:bg-yellow-50 w-full">
+                        View Details
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -396,8 +515,16 @@ export default function Home() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 bg-teal-800 text-white">
-          <div className="container px-4">
+        <section className="py-16 bg-teal-800 text-white relative overflow-hidden">
+          <div className="absolute inset-0 z-0 opacity-10">
+            <Image 
+              src="/placeholder.svg?height=1000&width=1800&text=Medical+Background" 
+              alt="Medical background"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="container px-4 relative z-10">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
                 <h2 className="text-3xl font-bold mb-4">Download the SWAASTA App</h2>
@@ -468,43 +595,59 @@ export default function Home() {
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                   </svg>
                 </a>
+                <a href="#" className="text-white hover:text-yellow-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                  </svg>
+                </a>
               </div>
             </div>
-            
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2">
-                <li><Link href="#" className="text-teal-200 hover:text-white">Home</Link></li>
-                <li><Link href="#" className="text-teal-200 hover:text-white">About Us</Link></li>
-                <li><Link href="#" className="text-teal-200 hover:text-white">Services</Link></li>
-                <li><Link href="#" className="text-teal-200 hover:text-white">Doctors</Link></li>
-                <li><Link href="#" className="text-teal-200 hover:text-white">Contact</Link></li>
+                <li><Link href="/about" className="text-teal-200 hover:text-yellow-400">About Us</Link></li>
+                <li><Link href="/contact" className="text-teal-200 hover:text-yellow-400">Contact</Link></li>
+                <li><Link href="/careers" className="text-teal-200 hover:text-yellow-400">Careers</Link></li>
+                <li><Link href="/blog" className="text-teal-200 hover:text-yellow-400">Blog</Link></li>
+                <li><Link href="/terms" className="text-teal-200 hover:text-yellow-400">Terms of Service</Link></li>
               </ul>
             </div>
-            
             <div>
               <h3 className="text-lg font-semibold mb-4">Services</h3>
               <ul className="space-y-2">
-                <li><Link href="#" className="text-teal-200 hover:text-white">Find a Doctor</Link></li>
-                <li><Link href="#" className="text-teal-200 hover:text-white">Online Pharmacy</Link></li>
-                <li><Link href="#" className="text-teal-200 hover:text-white">Lab Tests</Link></li>
-                <li><Link href="#" className="text-teal-200 hover:text-white">Health Packages</Link></li>
-                <li><Link href="#" className="text-teal-200 hover:text-white">Hospital Care</Link></li>
+                <li><Link href="/doctors" className="text-teal-200 hover:text-yellow-400">Find Doctors</Link></li>
+                <li><Link href="/pharmacy" className="text-teal-200 hover:text-yellow-400">Order Medicines</Link></li>
+                <li><Link href="/lab-tests" className="text-teal-200 hover:text-yellow-400">Book Lab Tests</Link></li>
+                <li><Link href="/appointments" className="text-teal-200 hover:text-yellow-400">Book Appointment</Link></li>
+                <li><Link href="/teleconsult" className="text-teal-200 hover:text-yellow-400">Video Consultation</Link></li>
               </ul>
             </div>
-            
             <div>
               <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-              <address className="not-italic text-teal-200">
-                <p className="mb-2">123 Healthcare Avenue</p>
-                <p className="mb-2">New Delhi, India 110001</p>
-                <p className="mb-2">Email: info@swaasta.com</p>
-                <p>Phone: +91 98765 43210</p>
-              </address>
+              <ul className="space-y-2">
+                <li className="flex items-center text-teal-200">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  123 Health Street, Medical District, City
+                </li>
+                <li className="flex items-center text-teal-200">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  support@swaasta.com
+                </li>
+                <li className="flex items-center text-teal-200">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  1800-SWAASTA
+                </li>
+              </ul>
             </div>
           </div>
-          
-          <div className="border-t border-teal-800 mt-8 pt-8 text-center text-teal-300">
+          <div className="border-t border-teal-800 mt-8 pt-8 text-center text-teal-200">
             <p>&copy; {new Date().getFullYear()} SWAASTA. All rights reserved.</p>
           </div>
         </div>
