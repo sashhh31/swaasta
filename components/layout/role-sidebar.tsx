@@ -107,7 +107,7 @@ export function RoleSidebar({ role }: RoleSidebarProps) {
           },
           {
             title: "My Appointments",
-            href: "/dashboard/doctor/appointments",
+            href: "/dashboard/dashboard/doctor/appointments",
             icon: Calendar,
           },
           {
@@ -140,7 +140,7 @@ export function RoleSidebar({ role }: RoleSidebarProps) {
           },
           {
             title: "Orders",
-            href: "/dashboard/pharmacy/orders",
+            href: "/dashboard/pharmacy/order",
             icon: ShoppingBag,
           },
           {
@@ -207,7 +207,7 @@ export function RoleSidebar({ role }: RoleSidebarProps) {
           },
           {
             title: "Appointments",
-            href: "/dashboard/patient/appointments",
+            href: "/dashboard/dashboard/patient/appointments",
             icon: Calendar,
           },
           {

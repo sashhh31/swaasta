@@ -46,7 +46,7 @@ export function DashboardSidebar() {
     },
     {
       title: "Appointments",
-      href: "/dashboard/patient/appointments",
+      href: "/dashboard/dashboard/patient/appointments",
       icon: Calendar,
     },
     {
@@ -74,7 +74,7 @@ export function DashboardSidebar() {
     },
     {
       title: "Appointments",
-      href: "/dashboard/doctor/appointments",
+      href: "/dashboard/dashboard/doctor/appointments",
       icon: Calendar,
     },
     {
@@ -107,7 +107,7 @@ export function DashboardSidebar() {
     },
     {
       title: "Orders",
-      href: "/dashboard/pharmacy/orders",
+      href: "/dashboard/pharmacy/order",
       icon: FileText,
     },
     {

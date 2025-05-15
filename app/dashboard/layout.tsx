@@ -1,34 +1,37 @@
-import type { ReactNode } from "react"
-import { RoleSidebar } from "@/components/layout/role-sidebar"
-import { RoleHeader } from "@/components/layout/role-header"
-import { SidebarProvider } from "@/components/ui/sidebar"
+import type React from "react"
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import "../globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
+import { SidebarProvider } from "@/components/sidebar-provider"
+import { AppSidebar } from "@/components/app-sidebar"
 
-interface DashboardLayoutProps {
-  children: ReactNode
-  params: {
-    role?: string
-  }
+const inter = Inter({ subsets: ["latin"] })
+
+export const metadata: Metadata = {
+  title: "MedAdmin - Medical Administration System",
+  description: "A comprehensive medical administration system",
 }
 
-export default function DashboardLayout({ children, params }: DashboardLayoutProps) {
-  // Get the role from the URL or default to "patient"
-  const role = (params.role as "admin" | "doctor" | "pharmacy" | "laboratory" | "patient") || "patient"
-
-  // Mock user data - in a real app, this would come from authentication
-  const userData = {
-    name: "John Doe",
-    avatar: "/placeholder.svg?height=32&width=32",
-  }
-
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
   return (
-    <SidebarProvider>
-      <div className="flex min-h-screen flex-col">
-        <RoleHeader role={role} userName={userData.name} userAvatar={userData.avatar} />
-        <div className="flex flex-1">
-          <RoleSidebar role={role} />
-          <main className="flex-1 p-6 md:p-8">{children}</main>
-        </div>
-      </div>
-    </SidebarProvider>
+    <html lang="en">
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          <SidebarProvider>
+            <div className="flex min-h-screen">
+              <AppSidebar />
+              <div className="flex-1">
+                <div className="container mx-auto py-6 px-4 md:px-6">{children}</div>
+              </div>
+            </div>
+          </SidebarProvider>
+        </ThemeProvider>
+      </body>
+    </html>
   )
 }

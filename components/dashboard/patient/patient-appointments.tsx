@@ -39,7 +39,7 @@ export function PatientAppointments() {
       <div className="flex justify-between items-center">
         <h3 className="text-lg font-medium">Upcoming Appointments</h3>
         <Button asChild>
-          <a href="/dashboard/patient/appointments/new">
+          <a href="/dashboard/dashboard/patient/appointments/new">
             <Calendar className="mr-2 h-4 w-4" />
             Book New
           </a>

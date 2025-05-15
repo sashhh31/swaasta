@@ -57,7 +57,7 @@ export function PharmacyOrders() {
       <div className="flex justify-between items-center">
         <h3 className="text-lg font-medium">Recent Orders</h3>
         <Button asChild>
-          <a href="/dashboard/pharmacy/orders">View All Orders</a>
+          <a href="/dashboard/pharmacy/order">View All Orders</a>
         </Button>
       </div>
       <Table>

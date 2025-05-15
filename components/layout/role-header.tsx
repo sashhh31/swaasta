@@ -15,6 +15,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Bell, HelpCircle, LogOut, Moon, Settings, Sun, User } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { useTheme } from "next-themes"
+import { SidebarTrigger } from "../ui/sidebar"
 
 interface RoleHeaderProps {
   role: "admin" | "doctor" | "pharmacy" | "laboratory" | "patient"
@@ -37,13 +38,14 @@ export function RoleHeader({ role, userName, userAvatar }: RoleHeaderProps) {
   }
 
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
+    <header className="sticky  top-0 z-30 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
       <div className="flex-1">
         <Link href={`/dashboard/${role}`} className="flex items-center gap-2 font-semibold">
           Swaasta
         </Link>
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 " >
+        <SidebarTrigger/>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" size="icon" className="relative">

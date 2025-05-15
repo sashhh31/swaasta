@@ -3,7 +3,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
-import { LineChart } from "@/components/dashboard/charts"
 import { Calendar, Clock, DollarSign, Star, Users, Video } from "lucide-react"
 import { DoctorAppointments } from "@/components/dashboard/doctor/doctor-appointments"
 import { DoctorPatients } from "@/components/dashboard/doctor/doctor-patients"
@@ -29,12 +28,12 @@ export default function DoctorDashboard() {
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Upcoming Consultations</CardTitle>
+            <CardTitle className="text-sm font-medium">Video Consultations</CardTitle>
             <Video className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">3</div>
-            <p className="text-xs text-muted-foreground">Next: Video call at 11:30 AM</p>
+            <p className="text-xs text-muted-foreground">Next: Sarah Johnson at 11:30 AM</p>
           </CardContent>
         </Card>
         <Card>
@@ -66,7 +65,9 @@ export default function DoctorDashboard() {
             <CardDescription>Number of appointments over time</CardDescription>
           </CardHeader>
           <CardContent className="pl-2">
-            <LineChart />
+            <div className="h-[300px] w-full bg-muted/20 rounded-md flex items-center justify-center text-muted-foreground">
+              Chart placeholder
+            </div>
           </CardContent>
         </Card>
         <Card className="col-span-3">
